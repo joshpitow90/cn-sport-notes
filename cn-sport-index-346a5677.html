@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>熊猫体育 · 从赛事到日常的陪伴</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f5f9fc;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: #1a2a3a;
+            line-height: 1.7;
+            padding: 2rem 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        /* 标题区域 —— 简洁博客式 */
+        .hero {
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #0a2e3f;
+            border-left: 6px solid #2d9b8e;
+            padding-left: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero .meta {
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+            flex-wrap: wrap;
+            color: #5b6f7c;
+            font-size: 0.9rem;
+            border-bottom: 1px solid #dae8ed;
+            padding-bottom: 0.8rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .hero .meta span {
+            background: #e5f0f3;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            color: #21635a;
+            font-size: 0.8rem;
+        }
+
+        /* 网格卡片容器 —— 蓝绿色点缀 */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin: 1.8rem 0 1rem;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 1.2rem;
+            padding: 1.5rem 1.2rem;
+            box-shadow: 0 4px 12px rgba(34, 98, 91, 0.06), 0 1px 4px rgba(0, 20, 20, 0.04);
+            transition: transform 0.2s ease, box-shadow 0.2s;
+            border: 1px solid #e4f0f0;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(45, 155, 142, 0.12);
+            border-color: #b8dbd5;
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #11554b;
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .card h3:before {
+            content: "▹";
+            color: #2d9b8e;
+            font-size: 1.4rem;
+            line-height: 1;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #2b3f4a;
+        }
+
+        /* 正文段落区域 —— 多段、引用、提示 */
+        .content-section {
+            background: #ffffff;
+            padding: 1.8rem 1.8rem 2rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+            border: 1px solid #e2edeb;
+        }
+
+        .content-section p {
+            margin-bottom: 1.2rem;
+            text-align: justify;
+        }
+
+        .content-section .lead {
+            font-size: 1.08rem;
+            color: #21444e;
+            font-weight: 450;
+            border-left: 4px solid #56b5a6;
+            padding-left: 1rem;
+            background: #f1f9f7;
+            padding: 0.8rem 1rem 0.8rem 1.2rem;
+            border-radius: 0 0.8rem 0.8rem 0;
+            margin-bottom: 1.6rem;
+        }
+
+        .quote-block {
+            background: #eef7f5;
+            padding: 1.2rem 1.5rem;
+            border-radius: 1.2rem;
+            margin: 1.6rem 0;
+            font-style: normal;
+            border-left: 5px solid #2d9b8e;
+            color: #1b4240;
+            font-size: 0.96rem;
+        }
+
+        .quote-block strong {
+            color: #0e5a4f;
+        }
+
+        .tip {
+            display: inline-block;
+            background: #d4ece7;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            color: #11554b;
+            font-weight: 500;
+            margin: 0.5rem 0 1rem;
+        }
+
+        .visit-line {
+            margin-top: 1.8rem;
+            padding-top: 1.2rem;
+            border-top: 2px dotted #c3dbd6;
+            font-size: 1rem;
+            background: #f8fcfb;
+            padding: 1rem 1.2rem;
+            border-radius: 1rem;
+        }
+
+        .visit-line a {
+            color: #0a6b5c;
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 2px solid #77c4b8;
+            padding-bottom: 1px;
+            transition: color 0.2s, border-color 0.2s;
+        }
+
+        .visit-line a:hover {
+            color: #043f36;
+            border-bottom-color: #043f36;
+        }
+
+        /* 常见问题摘要 (faq) */
+        .faq-mini {
+            margin: 1.8rem 0 0.5rem;
+            background: #f6fbfa;
+            padding: 1.2rem 1.5rem;
+            border-radius: 1.2rem;
+        }
+
+        .faq-mini details {
+            margin-bottom: 0.4rem;
+            border-bottom: 1px solid #d4e6e1;
+            padding: 0.5rem 0;
+        }
+
+        .faq-mini details:last-child {
+            border-bottom: none;
+        }
+
+        .faq-mini summary {
+            font-weight: 600;
+            color: #13584c;
+            cursor: pointer;
+            padding: 0.2rem 0;
+            list-style: "📌 ";
+        }
+
+        .faq-mini summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-mini p {
+            margin-top: 0.5rem;
+            padding-left: 1.2rem;
+            color: #2d4955;
+        }
+
+        /* 响应式 */
+        @media (max-width: 640px) {
+            body {
+                padding: 1.2rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 1.7rem;
+                padding-left: 0.8rem;
+            }
+
+            .card {
+                padding: 1rem;
+            }
+
+            .content-section {
+                padding: 1.2rem;
+            }
+
+            .grid-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .visit-line {
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .hero h1 {
+                font-size: 2.6rem;
+            }
+        }
+
+        /* 辅助色块 */
+        .badge {
+            background: #2d9b8e;
+            color: #fff;
+            font-size: 0.7rem;
+            border-radius: 30px;
+            padding: 0.15rem 0.8rem;
+            vertical-align: middle;
+            margin-left: 0.4rem;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #d2e6e2;
+            margin: 1.2rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <!-- 简洁博客式 hero 标题 + 导语 -->
+        <header class="hero">
+            <h1>熊猫体育 · 运动是温和的坚持</h1>
+            <div class="meta">
+                <span>主题随记</span>
+                <span>·</span>
+                <span>蓝绿笔记</span>
+                <span>·</span>
+                <span>2025 · 春</span>
+            </div>
+            <p class="lead" style="font-size:1.05rem; color:#1d4d47; background:#eaf5f2; padding:0.8rem 1.2rem; border-radius: 1rem;">
+                不是所有陪伴都声势浩大。从一场球赛的直播到日常的健身记录，<a href="https://cn-sport-panda.com" style="color:#0b6b5c; text-decoration: underline; font-weight:500;">熊猫体育</a> 更像一个安静的同行者，把运动拉进生活半径。
+            </p>
+        </header>
+
+        <!-- 网格卡片：特点 + 场景 -->
+        <div class="grid-cards">
+            <div class="card">
+                <h3>赛事与记录</h3>
+                <p>覆盖主流联赛与专项赛事，同时提供简洁的个人运动记录，让你关注的不只是比分。</p>
+            </div>
+            <div class="card">
+                <h3>社区节奏</h3>
+                <p>没有喧哗的推送，只有围绕运动本身的讨论、打卡与真实分享，像一本公共训练日志。</p>
+            </div>
+            <div class="card">
+                <h3>轻量工具</h3>
+                <p>赛程提醒、基础数据统计、运动习惯追踪 —— 功能克制，但足够日常使用。</p>
+            </div>
+        </div>
+
+        <!-- 正文多段 + 引用 + 提示 -->
+        <section class="content-section">
+            <p class="lead">从“看别人运动”到“自己动起来”，中间只差一个低门槛的起点。</p>
+
+            <p>很多人对体育的印象停留在电视里的激烈对抗，或者健身房里的专业器械。但运动本身有更温和的一面：晚饭后的散步、周末的羽毛球、跟着屏幕做一组拉伸。这些日常碎片，恰恰是 <strong>熊猫体育</strong> 试图去承接的部分。它不强调突破极限，而是鼓励一种可持续的参与感。</p>
+
+            <div class="quote-block">
+                <strong>引用一则用户留言：</strong> “以前总觉得运动需要专门腾出时间、换好装备，后来发现打开网页看看赛程、跟朋友约一场慢跑，反而坚持得更久。熊猫体育没有给我压力，只是提供了一个自然的入口。”
+            </div>
+
+            <p>平台的内容组织也偏向这种克制：首页不会铺满弹窗和排行榜，更多是分门别类的赛事预览、运动知识卡片，以及用户自发形成的轻量社群。你可以在页面底部找到<a href="https://cn-sport-panda.com" style="color:#0b6b5c; text-decoration: underline;">熊猫体育</a>的完整内容，它更像一个安静的信息集散地，而不是喧闹的竞技场。</p>
+
+            <p>如果你恰好对某项运动感兴趣，又不想被算法推着走，这里的节奏或许合适。没有浮动广告，没有夸张的标题，只是把运动相关的内容整理好，等你需要的时候随时翻阅。</p>
+
+            <div class="tip">💡 小提示：试着把运动看作日常对话，而不是任务清单。</div>
+
+            <!-- 访问句 —— 自然嵌入 -->
+            <div class="visit-line">
+                📖 如果你想进一步了解这种陪伴感，可以随时去 <a href="https://cn-sport-panda.com">熊猫体育</a> 看看最近的赛事安排或者社区动态。页面很轻，打开不需要等待。
+            </div>
+
+            <!-- FAQ 摘要 -->
+            <div class="faq-mini">
+                <details>
+                    <summary>熊猫体育主要适合哪些人？</summary>
+                    <p>适合喜欢体育但不想被过度营销干扰的人；也适合刚开始尝试规律运动、需要温和督促的初学者。内容偏向大众化，专业度适中。</p>
+                </details>
+                <details>
+                    <summary>是否需要下载应用？</summary>
+                    <p>不需要。基于网页即可访问，移动端适配良好，也可以添加到主屏幕作为快捷方式。</p>
+                </details>
+                <details>
+                    <summary>社区氛围怎么样？</summary>
+                    <p>以运动记录和日常讨论为主，没有过激的争论或刷屏。更像一个大家安静打卡、偶尔交流的长廊。</p>
+                </details>
+            </div>
+
+            <hr>
+            <p style="font-size:0.9rem; color:#52747c; margin-top:0.2rem;">
+                · 本文仅作主题介绍，内容基于公开信息与用户反馈整理 ·
+            </p>
+        </section>
+    </div>
+</body>
+</html>
